@@ -13,3 +13,13 @@ A operação de transferência deve ser uma transação (ou seja, revertida em q
 No recebimento de pagamento, o usuário ou lojista precisa receber notificação (envio de email, sms) enviada por um serviço de terceiro e eventualmente este serviço pode estar indisponível/instável. Use este mock para simular o envio (https://run.mocky.io/v3/54dc2cf1-3add-45b5-b5a9-6bf7e7f1f4a6).
 
 Este serviço deve ser RESTFul.
+
+
+
+O que será um Diferencial
+Uso de Docker
+Testes de integração
+Testes unitários
+Uso de Design Patterns
+Documentação
+Proposta de melhoria na arquitetura
