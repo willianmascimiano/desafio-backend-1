@@ -5,10 +5,20 @@ import com.desafio.primeiro.model.Transferencia;
 import com.desafio.primeiro.model.Usuario;
 import com.desafio.primeiro.enums.ETransferenciaStatus;
 import com.desafio.primeiro.enums.ETransferenciaTipo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TransferenciaService  {
+
+
+    @Autowired
+    Transferencia transferencia;
+
+    @Autowired
+    UsuarioService usuarioService ;
+
+
 
 
 
@@ -28,8 +38,21 @@ public class TransferenciaService  {
 
             //Validar se a transação é segura.
 
-            origem.setSaldo(origem.getSaldo()-montante);
-            destino.setSaldo(destino.getSaldo()+montante);
+            try {
+                origem.setSaldo(origem.getSaldo() - montante);
+                destino.setSaldo(destino.getSaldo() + montante);
+
+                usuarioService.save(origem);
+                usuarioService.save(destino);
+                
+            }catch(Exception e){
+                System.out.println("Erro ao transferir, invertendo transação.");
+             }
+
+
+
+
+
             return ETransferenciaStatus.SUCCESS;
 
         }else{
